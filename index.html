@@ -16,7 +16,6 @@
     </div>
 
     <script>
-      var language = 'en';
       var texts = {
         en: {
           title: 'Virtusize b2b website',
@@ -35,7 +34,7 @@
         }
       }
 
-      function translatePage() {
+      function translatePage(language) {
         var i18nEls = document.querySelectorAll('[data-i18n]');
         for (var i = 0; i < i18nEls.length; i++) {
           var i18nEl = i18nEls[i];
@@ -44,14 +43,13 @@
         }
       }
 
-      function changeLanguage(value) {
-        language = value;
-        persistLanguageSelection(value)
-        translatePage();
+      function changeLanguage(language) {
+        persistLanguageSelection(language)
+        translatePage(language);
       }
 
-      function persistLanguageSelection(value) {
-        document.cookie = "language=" + value;
+      function persistLanguageSelection(language) {
+        document.cookie = "language=" + language;
       }
 
       function persistedLanguageSelection() {
@@ -59,10 +57,11 @@
       }
 
       function init() {
-        language = persistedLanguageSelection();
+        var language = persistedLanguageSelection();
         var selectEl = document.querySelector('[data-i18n-select]');
+
         selectEl.value = language;
-        translatePage();
+        translatePage(language);
       }
 
       init();
