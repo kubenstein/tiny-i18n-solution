@@ -46,7 +46,12 @@
 
       function changeLanguage(value) {
         language = value;
+        persistLanguageSelection(value)
         translatePage();
+      }
+
+      function persistLanguageSelection(value) {
+        document.cookie = "language=" + value;
       }
 
       translatePage();
