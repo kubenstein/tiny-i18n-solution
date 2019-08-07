@@ -58,8 +58,13 @@
         return (document.cookie.match('(^|[^;]+)\\s*' + 'language' + '\\s*=\\s*([^;]+)') || []).pop()
       }
 
+      function getLanguage() {
+        return persistedLanguageSelection() ||
+               (navigator.language || 'en').split('-')[0];
+      }
+
       function init() {
-        var language = persistedLanguageSelection() || 'en';
+        var language = getLanguage();
         var selectEl = document.querySelector('[data-i18n-select]');
 
         selectEl.addEventListener('change', function(e) { changeLanguage(e.target.value); })
