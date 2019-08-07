@@ -35,11 +35,13 @@
       }
 
       function translatePage(language) {
+        var i18n = texts[language] || texts['en'];
+
         var i18nEls = document.querySelectorAll('[data-i18n]');
         for (var i = 0; i < i18nEls.length; i++) {
           var i18nEl = i18nEls[i];
           var i18nKey = i18nEl.getAttribute('data-i18n');
-          i18nEl.innerHTML = texts[language][i18nKey];
+          i18nEl.innerHTML = i18n[i18nKey];
         }
       }
 
