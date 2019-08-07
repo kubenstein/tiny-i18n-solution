@@ -46,20 +46,20 @@
       }
 
       function changeLanguage(language) {
-        persistLanguageSelection(language)
+        storeLanguageInCookie(language)
         translatePage(language);
       }
 
-      function persistLanguageSelection(language) {
+      function storeLanguageInCookie(language) {
         document.cookie = "language=" + language;
       }
 
-      function persistedLanguageSelection() {
+      function readLanguageFromCookie() {
         return (document.cookie.match('(^|[^;]+)\\s*' + 'language' + '\\s*=\\s*([^;]+)') || []).pop()
       }
 
       function getLanguage() {
-        return persistedLanguageSelection() ||
+        return readLanguageFromCookie() ||
                (navigator.language || 'en').split('-')[0];
       }
 
