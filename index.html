@@ -46,7 +46,7 @@
       }
 
       function changeLanguage(language) {
-        storeLanguageInCookie(language)
+        storeLanguageInCookie(language);
         translatePage(language);
       }
 
@@ -55,7 +55,7 @@
       }
 
       function readLanguageFromCookie() {
-        return (document.cookie.match('(^|[^;]+)\\s*' + 'language' + '\\s*=\\s*([^;]+)') || []).pop()
+        return (document.cookie.match('(^|[^;]+)\\s*' + 'language' + '\\s*=\\s*([^;]+)') || []).pop();
       }
 
       function getLanguage() {
