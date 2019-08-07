@@ -57,7 +57,7 @@
       }
 
       function init() {
-        var language = persistedLanguageSelection();
+        var language = persistedLanguageSelection() || 'en';
         var selectEl = document.querySelector('[data-i18n-select]');
 
         selectEl.value = language;
