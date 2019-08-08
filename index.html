@@ -50,6 +50,8 @@
         }
       }
 
+      // --------------------------
+
       function translatePage(language) {
         translateTexts(language);
         translatePlaceholders(language);
@@ -87,22 +89,22 @@
         }
       }
 
+      function getLanguage() {
+        return readLanguageFromCookie() ||
+               (navigator.language || 'ja').split('-')[0];
+      }
+
       function changeLanguage(language) {
         storeLanguageInCookie(language);
         translatePage(language);
-      }
-
-      function storeLanguageInCookie(language) {
-        document.cookie = "language=" + language;
       }
 
       function readLanguageFromCookie() {
         return (document.cookie.match('(^|[^;]+)\\s*' + 'language' + '\\s*=\\s*([^;]+)') || []).pop();
       }
 
-      function getLanguage() {
-        return readLanguageFromCookie() ||
-               (navigator.language || 'ja').split('-')[0];
+      function storeLanguageInCookie(language) {
+        document.cookie = "language=" + language;
       }
 
       function init() {
