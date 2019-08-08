@@ -8,6 +8,18 @@
       <p data-i18n='text'>The most accessible of Tokyo's Izu Islands, Hachijojima is a short, direct flight from Haneda Airport, making it the quickest and easiest subtropical retreat from the city. Escape the concrete jungle for the beautiful nature and unique culture of this off-the-beaten-track destination.</p>
 
       <input data-i18n-placeholder='input-placeholder' type="text" placeholder="Enter username" />
+
+      <div data-i18n-show='en'>
+        <hr>
+        Show in En
+      </div>
+
+      <div data-i18n-show='ja'>
+        <hr>
+        Show in Ja
+      </div>
+      <hr>
+
       <span data-i18n='choose-language'>Choose language:</span>
       <select data-i18n-select>
         <option value="en">EN</option>
@@ -41,6 +53,7 @@
       function translatePage(language) {
         translateTexts(language);
         translatePlaceholders(language);
+        showLanguageSpecificElements(language);
       }
 
       function translateTexts(language) {
@@ -62,6 +75,15 @@
           var i18nEl = i18nEls[i];
           var i18nKey = i18nEl.getAttribute('data-i18n-placeholder');
           i18nEl.placeholder = i18n[i18nKey] || '';
+        }
+      }
+
+      function showLanguageSpecificElements(language) {
+        var i18nEls = document.querySelectorAll('[data-i18n-show]');
+        for (var i = 0; i < i18nEls.length; i++) {
+          var i18nEl = i18nEls[i];
+          var i18nLangVisibility = i18nEl.getAttribute('data-i18n-show');
+          i18nEl.style.display = i18nLangVisibility === language ? 'inherit' : 'none';
         }
       }
 
