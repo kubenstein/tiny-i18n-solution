@@ -8,6 +8,7 @@
       <p data-i18n='text'>The most accessible of Tokyo's Izu Islands, Hachijojima is a short, direct flight from Haneda Airport, making it the quickest and easiest subtropical retreat from the city. Escape the concrete jungle for the beautiful nature and unique culture of this off-the-beaten-track destination.</p>
 
       <input data-i18n-placeholder='input-placeholder' type="text" placeholder="Enter username" />
+      <input data-i18n='input-button' type="button" value="Button" />
 
       <div data-i18n-show='en'>
         <hr>
@@ -32,21 +33,26 @@
       var texts = {
         en: {
           title: 'Company B2B website',
-          text: "The most accessible of Tokyo's Izu Islands, Hachijojima is a short, direct flight from Haneda Airport, making it the quickest and easiest subtropical retreat from the city. Escape the concrete jungle for the beautiful nature and unique culture of this off-the-beaten-track destination.",
+          text: "The most accessible of Tokyo's Izu Islands, Hachijojima is a short, direct " +
+          "flight from Haneda Airport, making it the quickest and easiest subtropical retreat " +
+          "from the city. Escape the concrete jungle for the beautiful nature and unique culture of this off-the-beaten-track destination.",
           'choose-language': 'Choose language:',
           'input-placeholder': 'Enter username',
+          'input-button': 'Button',
         },
         ko: {
           title: 'Company B2B 웹 사이트',
           text: "도쿄에서 비행기로 단 1시간이면 도착하는 아열대 화산섬",
           'choose-language': '언어 선택:',
           'input-placeholder': '사용자 이름을 입력하십시오',
+          'input-button': '단추',
         },
         ja: {
           title: 'Company B2B ウェブサイト',
           text: "東京の伊豆諸島で最もアクセスが良い八丈島は、羽田空港からの短時間の直行便で行くことができる、亜熱帯のリゾートです。コンクリートジャングルを脱出し、八丈島の美しい自然とユニークな文化を体験しましょう。",
           'choose-language': '言語を選択:',
           'input-placeholder': 'ユーザー名',
+          'input-button': 'ボタン',
         }
       }
 
@@ -65,7 +71,8 @@
         for (var i = 0; i < i18nEls.length; i++) {
           var i18nEl = i18nEls[i];
           var i18nKey = i18nEl.getAttribute('data-i18n');
-          i18nEl.innerHTML = i18n[i18nKey];
+          var propToChange = i18nEl.value ? 'value' : 'innerHTML';
+          i18nEl[propToChange] = i18n[i18nKey];
         }
       }
 
