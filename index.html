@@ -73,6 +73,7 @@
           var i18nKey = i18nEl.getAttribute('data-i18n');
           var propToChange = i18nEl.value ? 'value' : 'innerHTML';
           i18nEl[propToChange] = i18n[i18nKey];
+          addLanguageClassToElement(i18nEl, language);
         }
       }
 
@@ -94,6 +95,11 @@
           var i18nLangVisibility = i18nEl.getAttribute('data-i18n-show');
           i18nEl.style.display = i18nLangVisibility === language ? 'inherit' : 'none';
         }
+      }
+
+      function addLanguageClassToElement(el, language) {
+        el.className = el.className.replace(/language-[^\s]*/, '');
+        el.className += " language-" + language;
       }
 
       function getLanguage() {
