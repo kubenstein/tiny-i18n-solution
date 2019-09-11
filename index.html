@@ -103,8 +103,7 @@
       }
 
       function getLanguage() {
-        return readLanguageFromCookie() ||
-               (navigator.language || 'ja').split('-')[0];
+        return readLanguageFromCookie() || 'ja';
       }
 
       function changeLanguage(language) {
